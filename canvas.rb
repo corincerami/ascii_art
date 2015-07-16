@@ -1,4 +1,4 @@
-class UI
+class Canvas
   include Curses
   require 'singleton'
   include Singleton

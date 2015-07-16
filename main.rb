@@ -1,8 +1,8 @@
 $LOAD_PATH.unshift '.'
 
 require 'curses'
-require 'app'
-require 'ui'
+require 'painter'
+require 'canvas'
 require 'brush'
 
-App.new.run
+Painter.new.paint
