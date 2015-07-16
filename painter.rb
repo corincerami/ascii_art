@@ -34,7 +34,11 @@ class Painter
     else
       brush.stroke = char
     end
-    canvas.paint(brush.x_pos, brush.y_pos, brush.stroke) unless brush.lifted
+    if brush.lifted
+      canvas.move(brush.x_pos, brush.y_pos)
+    else
+      canvas.paint(brush.x_pos, brush.y_pos, brush.stroke)
+    end
   end
 
   def system_commands(char)
