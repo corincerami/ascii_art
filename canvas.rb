@@ -3,9 +3,11 @@ class Canvas
   require 'singleton'
   include Singleton
 
+  attr_accessor :surface
+
   def initialize
     noecho
-    init_screen
+    @surface = init_screen
     stdscr.keypad = true
   end
 
@@ -14,8 +16,12 @@ class Canvas
     exit
   end
 
-  def paint(x, y, string)
+  def move(x, y)
     setpos(y, x)
+  end
+
+  def paint(x, y, string)
+    move(x, y)
     addstr(string)
   end
 
@@ -26,8 +32,20 @@ class Canvas
   end
 
   def clear(x, y)
-    setpos(y, x)
+    move(x, y)
     delch
     insch(' ')
+  end
+
+  def read_at_cursor
+    inch
+  end
+
+  def line_count
+    lines
+  end
+
+  def column_count
+    cols
   end
 end
