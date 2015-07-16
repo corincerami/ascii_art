@@ -13,7 +13,7 @@ class Painter
     Canvas::KEY_RIGHT,
     9, # tab key character code
     27, # esc key character code
-    "p"
+    'p'
   ]
 
   def paint
@@ -45,7 +45,7 @@ class Painter
       Canvas::KEY_RIGHT => proc { brush.move_right },
       9 => proc { brush.raise_or_lower },
       27 => proc { canvas.close },
-      "p" => proc { Printer.new("drawing.txt").print }
+      'p' => proc { Printer.new('drawing.txt').print }
     }
     inputs[char].call
   end
