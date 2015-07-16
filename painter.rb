@@ -19,7 +19,7 @@ class Painter
   def paint
     canvas.paint(brush.x_pos, brush.y_pos, brush.stroke)
     loop do
-      accept_input
+      follow_commands
     end
   end
 
@@ -27,13 +27,17 @@ class Painter
 
   attr_reader :canvas, :brush
 
-  def accept_input
+  def follow_commands
     char = canvas.accept_input
     if COMMAND_KEYS.include?(char)
       system_commands(char)
     else
       brush.stroke = char
     end
+    move_brush
+  end
+
+  def move_brush
     if brush.lifted
       canvas.move(brush.x_pos, brush.y_pos)
     else
