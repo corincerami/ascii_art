@@ -1,9 +1,14 @@
 class Brush
-  attr_accessor :stroke, :x_pos, :y_pos
+  attr_accessor :stroke, :x_pos, :y_pos, :lifted
   def initialize(stroke, x, y)
     @stroke = stroke
     @x_pos = x
     @y_pos = y
+    @lifted = false
+  end
+
+  def raise_or_lower
+    @lifted = !@lifted
   end
 
   def move(x, y)
