@@ -13,8 +13,9 @@ command :start do |c|
   c.summary = 'Open a new canvas to begin drawing'
   c.description = c.summary
   c.example 'Starts the ascii_art program', 'ascii_art start'
+  c.option '-f', '--file FILENAME', String, 'Change the filename where your art will be saved'
   c.action do |args, options|
-    AsciiArt.start
+    AsciiArt.start(options.file)
   end
 end
 
