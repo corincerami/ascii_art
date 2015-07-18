@@ -2,7 +2,7 @@
 
 require 'rubygems'
 require 'commander/import'
-require './../lib/ascii_art'
+require 'ascii_art'
 require 'ascii_art/version'
 
 program :version, AsciiArt::VERSION
