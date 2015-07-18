@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'commander/import'
+require 'ascii_art'
+require 'ascii_art/version'
+
+program :version, AsciiArt::VERSION
+program :description, 'A command line app for drawing and saving ASCII art'
+
+command :start do |c|
+  c.syntax = 'ascii_art start [options]'
+  c.summary = 'Open a new canvas to begin drawing'
+  c.description = c.summary
+  c.example 'Starts the ascii_art program', 'ascii_art start'
+  c.action do |args, options|
+    AsciiArt.start
+  end
+end
+
