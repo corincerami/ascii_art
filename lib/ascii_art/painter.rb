@@ -4,7 +4,8 @@ module AsciiArt
     def initialize(print_file=nil)
       @canvas = Canvas.instance
       @brush = Brush.new('.', 0, 0)
-      @printer = Printer.new(print_file ||= 'drawing.txt')
+      @print_file = print_file
+      @printer
       @scanner
       at_exit { canvas.close }
     end
@@ -40,7 +41,7 @@ module AsciiArt
     private
 
     attr_accessor :scanner
-    attr_reader :canvas, :brush, :printer
+    attr_reader :canvas, :brush, :printer, :print_file
 
     def follow_commands
       char = canvas.accept_input
@@ -68,7 +69,10 @@ module AsciiArt
         Canvas::KEY_RIGHT => proc { brush.move_right },
         9 => proc { brush.raise_or_lower },
         27 => proc { canvas.close },
-        'p' => proc { printer.print }
+        'p' => proc {
+          printer = Printer.new(print_file ||= 'drawing.txt')
+          printer.print
+        }
       }
       inputs[char].call
     end
