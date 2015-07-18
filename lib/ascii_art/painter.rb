@@ -1,10 +1,11 @@
 module AsciiArt
   require_relative 'canvas'
   class Painter
-    def initialize(filename=nil)
+    def initialize(print_file=nil)
       @canvas = Canvas.instance
       @brush = Brush.new('.', 0, 0)
-      @printer = Printer.new(filename ||= 'drawing.txt')
+      @printer = Printer.new(print_file ||= 'drawing.txt')
+      @scanner
       at_exit { canvas.close }
     end
 
@@ -20,6 +21,17 @@ module AsciiArt
 
     def paint
       canvas.paint(brush.x_pos, brush.y_pos, brush.stroke)
+      command_loop
+    end
+
+    def load_drawing(filename)
+      Scanner.new(filename).scan
+      brush.lifted = true
+      move_brush
+      command_loop
+    end
+
+    def command_loop
       loop do
         follow_commands
       end
@@ -27,6 +39,7 @@ module AsciiArt
 
     private
 
+    attr_accessor :scanner
     attr_reader :canvas, :brush, :printer
 
     def follow_commands
