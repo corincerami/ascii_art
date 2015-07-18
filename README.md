@@ -25,7 +25,7 @@ The ascii_art gem will allow you to turn your terminal into a canvas for creatin
 
 Install the gem with:
 
-    $ gem install explore_mars
+    $ gem install ascii_art
 
 ## Usage
 
