@@ -2,7 +2,7 @@
 
 require 'rubygems'
 require 'commander/import'
-require 'ascii_art'
+require './../lib/ascii_art'
 require 'ascii_art/version'
 
 program :version, AsciiArt::VERSION
@@ -13,9 +13,20 @@ command :start do |c|
   c.summary = 'Open a new canvas to begin drawing'
   c.description = c.summary
   c.example 'Starts the ascii_art program', 'ascii_art start'
+  c.example 'Starts the app with a custom save filename', 'ascii_art start -f my_file.txt'
   c.option '-f', '--file FILENAME', String, 'Change the filename where your art will be saved'
   c.action do |args, options|
     AsciiArt.start(options.file)
   end
 end
 
+command :scan do |c|
+  c.syntax = 'ascii_art scan [options]'
+  c.summary = 'Load a txt file to continue drawing'
+  c.description = c.summary
+  c.example 'Starts the app with a drawing preloaded from a txt file', 'ascii_art scan my_file.txt'
+  c.option '-f', '--file FILENAME', String, 'Change the filename where your art will be saved'
+  c.action do |args, options|
+    AsciiArt.start_with_scan(args.first, options.file)
+  end
+end
