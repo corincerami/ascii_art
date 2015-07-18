@@ -9,7 +9,7 @@ require 'ascii_art/brush'
 require 'ascii_art/printer'
 
 module AsciiArt
-  def self.start
-    Painter.new.paint
+  def self.start(filename=nil)
+    Painter.new(filename).paint
   end
 end
