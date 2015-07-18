@@ -62,6 +62,20 @@ $ ascii_art start -f my_drawing.txt
 $ ascii_art start --file best_art.txt
 ```
 
+If you'd like to continue working on a drawing you've started previously, you can load files into the app using the `scan` command:
+
+```
+$ ascii_art scan an_old_drawing.txt
+```
+
+and can still use the -f option to set the print destination:
+
+```
+$ ascii_art scan an_old_drawing.txt -f my_new_masterpiece.txt
+```
+
+This will read the file you specify and draw its contents to a new canvas. In order to prevent overwriting any of your beautiful handiwork, the brush will start in the lifted position, and can be lowered with the `tab` key.
+
 ## Contributing
 
 If you would like to contribute to AsciiArt, feel free to create a
