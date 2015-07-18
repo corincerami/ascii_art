@@ -35,9 +35,15 @@ To open a new canvas, simply use:
 AsciiArt.start
 ```
 
+or from the command line:
+
+```
+$ ascii_art start
+```
+
 This will open a blank canvas on which you can start drawing.
 
-### Commands
+### Key Commands
 
 Key                   | Action
 ----------------------|--------------------------------------
@@ -46,6 +52,15 @@ Arrows                | Move the cursor around the screen
 `p`                   | "Print" the drawing, saving it to a `drawing.txt` file in your current directory
 Other character keys  | Change the character being drawn
 `esc`                 | Quit the program
+
+If you would like to specify a different file to which your drawing should be saved, you can use the -f or --file option on the command line:
+
+```
+$ ascii_art start -f my_drawing.txt
+```
+```
+$ ascii_art start --file best_art.txt
+```
 
 ## Contributing
 
