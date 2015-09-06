@@ -23,6 +23,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rake", "~> 10.0"
 
-  spec.add_runtime_dependency 'curses' '~> 1.0'
+  spec.add_runtime_dependency 'curses'
   spec.add_runtime_dependency 'commander', '~> 4.3'
 end
